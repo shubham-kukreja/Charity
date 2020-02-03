@@ -5,6 +5,7 @@ contract Charity {
         string purpose;
         uint256 value;
         address vendor;
+        string need;
         bool donationComplete;
         uint256 approvalCount;
         mapping(address => bool) approval;
@@ -32,7 +33,7 @@ contract Charity {
         _;
     }
 
-    function createRequest(string _purpose, uint256 _value, address _vendor)
+    function createRequest(string _purpose, uint256 _value, address _vendor, string _need)
         public
         restricted
     {
@@ -41,7 +42,8 @@ contract Charity {
             value: _value,
             vendor: _vendor,
             donationComplete: false,
-            approvalCount: 0
+            approvalCount: 0,
+            need : _need
         });
         requests.push(newRequest);
     }
